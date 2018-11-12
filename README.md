@@ -213,7 +213,7 @@ Since these are cropped sequences, the network needed to be retrained on the ori
 
 Lastly, there are a few sequences in the test set where ego is running on slopes right after a turn. Since the training set consists of mostly level roads, it was required to augment the data with some sequences resembling slopes. To this end, I did a progressive vertical crop to resemble climbing up and down.
 
-|    Climbing up  |    Climbing down      | 
+|    Climbing down  |    Climbing up      | 
 |:---------------:|:---------------------:|
 |![png](images/slope1.gif)|![png](images/slope2.gif)|
 
