@@ -119,13 +119,16 @@ from odometry import *
 
 d = Dataset.load('train', n_sequences=16, strided_sequences=True)
 
-# Data augmentation - only for Stage 2
+# Balancing data - Stage 1 and Stage 2
 d1 = d.scaled_sequences(5, 10)
 d2 = d.scaled_sequences(13, 14.5)
 d3 = d.scaled_sequences(6, 7.5, 4)
 z = d.stationary_sequences(500)
+
+# Turn and slope augmentation - only for Stage 2
 t = d.clip(15000, 20400).turn_sequences(1, 15, 4694)
 s = d.clip(15000, 20400).sloped_sequences(3, 10, 1000)
+
 dd = d.append(d1).append(d2).append(d3).append(z).append(t).append(s)
 
 print('Dataset size - ', dd.labels.shape)
@@ -221,7 +224,7 @@ Without a labelled test set, it is difficult to estimate results. In order to ey
 
 ![res.png](images/res.png)
 
-Based on the baseline, I am seeing an MSE score of 14.49. The actual MSE, based on the test labels is expected to be better. 
+Based on the baseline, I am seeing an MSE score of 11.59. The actual MSE, based on the test labels is expected to be better. 
 
 ## Lessons
 
